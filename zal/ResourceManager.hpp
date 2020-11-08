@@ -19,10 +19,11 @@ class ResourceManager
     Q = aa.Q; 
     return *this; 
   }
-  ResourceManager (const ResourceManager&& aa) : Q{(aa.Q)} {}
-  ResourceManager& operator=(ResourceManager&& aa)
-  {
+  ResourceManager (const ResourceManager&& aa) noexcept : Q ( std::exchange(aa.Q,nullptr) ) {}
+  ResourceManager& operator=(ResourceManager&& aa) noexcept
+  {delete Q;
     Q = (aa.Q);
+    aa.Q=nullptr;
     return *this;
   }
 };
