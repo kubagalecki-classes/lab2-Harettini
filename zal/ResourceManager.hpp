@@ -7,7 +7,7 @@ class ResourceManager
   Resource* Q;
 
   public:
-    ResourceManager() {Q=new Resource;}
+    ResourceManager() {Q=new Resource&;}
     ~ResourceManager() {delete Q;}
     double get()
     {
