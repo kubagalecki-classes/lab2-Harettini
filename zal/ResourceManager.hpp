@@ -14,7 +14,7 @@ class ResourceManager
     }
     ResourceManager(const ResourceManager& aa):Q(aa.Q) {}
  ResourceManager& operator=(const ResourceManager& aa) 
- { Q=&aa.Q; 
+ { Q=aa.Q; 
  return *this; }
 ResourceManager (const ResourceManager&& aa):Q(std::move(aa.Q)){}
 ResourceManager& operator=(ResourceManager&& aa)
