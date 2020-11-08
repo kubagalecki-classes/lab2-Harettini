@@ -1,5 +1,8 @@
 #include <iostream>
-
+double derp(double a)
+{
+    return 4 * a * a;
+}
 class Wekt
 {
 private:
@@ -68,23 +71,21 @@ struct Prezent
 
 int main()
 {
-    Wekt W(4);
-    W[1] = 1;
-    W[4] = 6;
+    /* Wekt W(4);
 
-    W.print();
+     W.ZmienDlug(6);
+     std::cout << "\n";
+     W.print();
+     W.ZmienDlug(2);
+     std::cout << "\n";
+     W.print();
+     W.ZmienDlug(6);
 
-    /*   W.ZmienDlug(6);
-         std::cout << "\n";
-          W.print();
-          W.ZmienDlug(2);
-          std::cout << "\n";
-          W.print();
-          W.ZmienDlug(6);
-          W.st[4] = 122;
-          std::cout << "\n";
-          W.print();*/
+     std::cout << "\n";
+     W.print();*/
 
-    Prezent Wee(6);
-    std::cout << Wee.k.dlugosc << "\n";
+    double a, *w;
+    a = -3;
+    w = &a;
+    std::cout << w << "\n" << derp(*w) << "\n";
 }
