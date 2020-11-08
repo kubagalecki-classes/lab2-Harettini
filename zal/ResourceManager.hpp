@@ -3,7 +3,7 @@
 #include "Resource.hpp"
 
 class ResourceManager
-{ double Q;
+{ double Q=1;
   public:
      ResourceManager() {}
     ~ResourceManager() {}
