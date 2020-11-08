@@ -3,14 +3,12 @@
 #include "Resource.hpp"
 
 class ResourceManager
-{ Resource *Q;
+{ Resource *Q=new Resource[1];
   public:
      ResourceManager() {}
     ~ResourceManager() { delete[] Q; }
     double get()
     {
-        Q = new Resource[1];
-
         return Q[0].get();
     }
     ResourceManager(const ResourceManager& aa) { Q = aa.Q; }
