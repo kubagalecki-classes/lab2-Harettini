@@ -3,10 +3,10 @@
 #include "Resource.hpp"
 
 class ResourceManager
-{ Resorse *Q
+{ Resource *Q
   public:
   ~ResourceManager(){}
-  double get(const Resorse& *Q)
+  double get(const Resource& *Q)
   {
     return Q.get();
   }
