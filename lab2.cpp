@@ -1,5 +1,4 @@
 #include <iostream>
-/*
 class Wekt
 {
 private:
@@ -49,6 +48,25 @@ public:
             ZmienDlug(y + 1);
         return st[y];
     }
+    Wekt(const Wekt& We)
+    {
+        dlug   = We.dlug;
+        pojemn = dlug;
+        st     = new double[dlug];
+        std::cout << "Jestem kopjujacy\n";
+        for (int i = 0; i < dlug; i++)
+            st[i] = We.st[i];
+    }
+    Wekt& operator=(const Wekt& We)
+    {
+        dlug   = We.dlug;
+        pojemn = dlug;
+        st     = new double[dlug];
+        std::cout << "Jestem operator kopjujacy\n";
+        for (int i = 0; i < dlug; i++)
+            st[i] = We.st[i];
+        return *this;
+    }
 };
 
 struct Kokardka
@@ -64,9 +82,9 @@ struct Prezent
 
     Kokardka k;
     // Inne pola ...
-};*/
+};
 
-class Resource
+/*class Resource
 {
 public:
     double get() { return 123; }
@@ -92,27 +110,31 @@ public:
         Q = std::move(aa.Q);
         return *this;
     }
-};
+};*/
 
 int main()
 {
-    /* Wekt W(4);
+    Wekt W(4);
 
-     W.ZmienDlug(6);
-     std::cout << "\n";
-     W.print();
-     W.ZmienDlug(2);
-     std::cout << "\n";
-     W.print();
-     W.ZmienDlug(6);
+    W.ZmienDlug(6);
+    std::cout << "\n";
+    W.print();
+    W.ZmienDlug(2);
+    std::cout << "\n";
+    W.print();
+    W.ZmienDlug(6);
 
-     std::cout << "\n";
-     W.print();*/
+    std::cout << "\n";
+    W.print();
+    Wekt V(W);
+    Wekt U(3);
+    U = V;
+    U = U;
 
-    ResourceManager A;
+    /*ResourceManager A;
     ResourceManager B(A);
     ResourceManager C = B;
     ResourceManager D = std::move(B);
 
-    std::cout << D.get() << B.get() << "\n";
+    std::cout << D.get() << B.get() << "\n";*/
 }
