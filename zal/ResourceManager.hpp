@@ -3,7 +3,7 @@
 #include "Resource.hpp"
 
 class ResourceManager
-{ Resource *Q;
+{ Resource* Q;
 
   public:
      ResourceManager() {Q=new Resource;}
