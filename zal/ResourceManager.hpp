@@ -3,13 +3,13 @@
 #include "Resource.hpp"
 
 class ResourceManager
-{ Resource *Q=new Resource[1];
+{ double Q;
   public:
      ResourceManager() {}
-    ~ResourceManager() { delete[] Q; }
+    ~ResourceManager() {}
     double get()
     {
-        return Q[0].get();
+        return Q;
     }
     ResourceManager(const ResourceManager& aa) { Q = aa.Q; }
  ResourceManager& operator=(const ResourceManager& t) { Q=t.Q; return *this; }
