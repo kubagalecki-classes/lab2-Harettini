@@ -69,7 +69,7 @@ struct Prezent
 class Resource
 {
 public:
-    double get() { return 10; }
+    double get() { return 123; }
 };
 
 class ResourceManager
@@ -80,21 +80,20 @@ public:
     ResourceManager() { Q = new Resource; }
     ~ResourceManager() { delete Q; }
     double get() { return Q[0].get(); }
-    ResourceManager(const ResourceManager& aa) { Q = aa.Q; }
-    ResourceManager& operator=(const ResourceManager& t)
+    ResourceManager(const ResourceManager& aa) : Q(aa.Q) {}
+    ResourceManager& operator=(const ResourceManager& aa)
     {
-        Q = t.Q;
+        Q = aa.Q;
         return *this;
     }
-    // ResourceManager(const ResourceManager&& t) { Q = std::move(t.Q); }
-    /*ResourceManager& operator=(ResourceManager&& R)
+    ResourceManager(const ResourceManager&& aa) : Q(std::move(aa.Q)) {}
+    ResourceManager& operator=(ResourceManager&& aa)
     {
-        Q = std::move(t.Q);
+        Q = std::move(aa.Q);
         return *this;
-    }*/
-
-    // Twoja implementacja tutaj
+    }
 };
+
 int main()
 {
     /* Wekt W(4);
@@ -113,6 +112,7 @@ int main()
     ResourceManager A;
     ResourceManager B(A);
     ResourceManager C = B;
+    ResourceManager D = std::move(B);
 
-    std::cout << C.get() << "\n";
+    std::cout << D.get() << B.get() << "\n";
 }
