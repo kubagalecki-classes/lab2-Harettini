@@ -69,7 +69,7 @@ struct Prezent
 class Resource
 {
 public:
-    double get() { return 6; }
+    double get() { return 122; }
 };
 
 class ResourceManager
@@ -77,14 +77,9 @@ class ResourceManager
     Resource* Q;
 
 public:
-    ResourceManager() {}
-    ~ResourceManager() { delete[] Q; }
-    double get()
-    {
-        Q = new Resource[1];
-
-        return Q[0].get();
-    }
+    ResourceManager() { Q = new Resource; }
+    ~ResourceManager() { delete Q; }
+    double get() { return Q.get(); }
     ResourceManager(const ResourceManager& aa) { Q = aa.Q; }
     ResourceManager& operator=(const ResourceManager& t)
     {
@@ -92,11 +87,14 @@ public:
         return *this;
     }
     // ResourceManager(const ResourceManager&& t) { Q = std::move(t.Q); }
-    // ResourceManager& operator=(ResourceManager&& R) { this = std::move(R); }
+    /*ResourceManager& operator=(ResourceManager&& R)
+    {
+        Q = std::move(t.Q);
+        return *this;
+    }*/
 
     // Twoja implementacja tutaj
 };
-
 int main()
 {
     /* Wekt W(4);
