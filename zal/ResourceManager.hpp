@@ -12,12 +12,12 @@ class ResourceManager
     {
         return Q[0].get();
     }
-    ResourceManager(const ResourceManager& aa) { Q = aa.Q; }
- ResourceManager& operator=(const ResourceManager& t) { Q=t.Q; return *this; }
-ResourceManager (const ResourceManager&& t){Q=std::move(t.Q);}
-ResourceManager& operator=(ResourceManager&& R)
-{Q=std::move(t.Q);
+    ResourceManager(const ResourceManager& aa):Q(aa.Q) {}
+ ResourceManager& operator=(const ResourceManager& aa) 
+ { Q=aa.Q; 
+ return *this; }
+ResourceManager (const ResourceManager&& aa):Q(std::move(aa.Q)){}
+ResourceManager& operator=(ResourceManager&& aa)
+{Q=std::move(aa.Q);
 return *this;}
-
-    // Twoja implementacja tutaj
 };

@@ -69,7 +69,7 @@ struct Prezent
 class Resource
 {
 public:
-    double get() { return 122; }
+    double get() { return 10; }
 };
 
 class ResourceManager
@@ -79,7 +79,7 @@ class ResourceManager
 public:
     ResourceManager() { Q = new Resource; }
     ~ResourceManager() { delete Q; }
-    double get() { return Q.get(); }
+    double get() { return Q[0].get(); }
     ResourceManager(const ResourceManager& aa) { Q = aa.Q; }
     ResourceManager& operator=(const ResourceManager& t)
     {
