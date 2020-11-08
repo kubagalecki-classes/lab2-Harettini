@@ -1,8 +1,5 @@
 #include <iostream>
-double derp(double a)
-{
-    return 4 * a * a;
-}
+/*
 class Wekt
 {
 private:
@@ -67,6 +64,37 @@ struct Prezent
 
     Kokardka k;
     // Inne pola ...
+};*/
+
+class Resource
+{
+public:
+    double get() { return 6; }
+};
+
+class ResourceManager
+{
+    Resource* Q;
+
+public:
+    ResourceManager() {}
+    ~ResourceManager() { delete[] Q; }
+    double get()
+    {
+        Q = new Resource[1];
+
+        return Q[0].get();
+    }
+    ResourceManager(const ResourceManager& aa) { Q = aa.Q; }
+    ResourceManager& operator=(const ResourceManager& t)
+    {
+        Q = t.Q;
+        return *this;
+    }
+    // ResourceManager(const ResourceManager&& t) { Q = std::move(t.Q); }
+    // ResourceManager& operator=(ResourceManager&& R) { this = std::move(R); }
+
+    // Twoja implementacja tutaj
 };
 
 int main()
@@ -84,8 +112,9 @@ int main()
      std::cout << "\n";
      W.print();*/
 
-    double a, *w;
-    a = -3;
-    w = &a;
-    std::cout << w << "\n" << derp(*w) << "\n";
+    ResourceManager A;
+    ResourceManager B(A);
+    ResourceManager C = B;
+
+    std::cout << C.get() << "\n";
 }

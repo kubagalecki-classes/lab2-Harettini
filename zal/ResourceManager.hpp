@@ -3,18 +3,22 @@
 #include "Resource.hpp"
 
 class ResourceManager
-{ Resource *Q
+{ Resource *Q;
   public:
-  ~ResourceManager(){}
-  double get(const Resource& *Q)
-  {
-    return Q.get();
-  }
-  ResourceManager (const ResourceManager& t):Q{t.Q}{}
- ResourceManager& operator=(const ResourceManager& t) { this.Q=t.Q return *this; }
+     ResourceManager() {}
+    ~ResourceManager() { delete[] Q; }
+    double get()
+    {
+        Q = new Resource[1];
+
+        return Q[0].get();
+    }
+    ResourceManager(const ResourceManager& aa) { Q = aa.Q; }
+ ResourceManager& operator=(const ResourceManager& t) { Q=t.Q; return *this; }
 ResourceManager (const ResourceManager&& t){Q=std::move(t.Q);}
 ResourceManager& operator=(ResourceManager&& R)
-{this=std::move(R);}
+{Q=std::move(t.Q);
+return *this;}
 
     // Twoja implementacja tutaj
 };
