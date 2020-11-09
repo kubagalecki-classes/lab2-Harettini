@@ -137,4 +137,9 @@ int main()
     ResourceManager D = std::move(B);
 
     std::cout << D.get() << B.get() << "\n";
+    double *a, *b;
+    double  c = 3;
+    a         = &c;
+    b         = a;
+    std::cout << *b << " " << *a << "\n";
 }

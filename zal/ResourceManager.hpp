@@ -12,14 +12,21 @@ public:
     double get() { return Q->get(); }
     ResourceManager(const ResourceManager& aa) : Q{aa.Q} {}
     ResourceManager& operator=(const ResourceManager& aa)
-    {
+    { if(this==&aa) return *this;
+        delete Q;
         Q = aa.Q;
         return *this;
     }
-    ResourceManager(const ResourceManager&& aa) : Q{(aa.Q)} {}
+    ResourceManager(const ResourceManager&& aa) {
+
+      Q=aa.Q;
+      aa.Q=nullprt;
+    }
     ResourceManager& operator=(const ResourceManager&& aa)
-    {
-        Q = (aa.Q);
+    { if(this==&aa) return *this;
+        delete Q;
+        Q=aa.Q;
+        aa.Q=nullprt;
         return *this;
     }
 };
