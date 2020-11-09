@@ -23,13 +23,13 @@ public:
     }
     ResourceManager(ResourceManager&& aa) 
     {
-      Q=new Resource{*aa.Q};
-    aa.Q=nullptr;
+      Q=aa.Q;
+      aa.Q=nullptr;
     }
     ResourceManager& operator=(ResourceManager&& aa)
     { if(this!=&aa)
     {   delete Q;
-        Q=new Resource {*aa.Q};
+        Q=aa.Q;
         aa.Q=nullptr;
      
     } 
