@@ -13,20 +13,20 @@ public:
     ResourceManager(const ResourceManager& aa) : Q{aa.Q} {}
     ResourceManager& operator=(const ResourceManager& aa)
     { if(this==&aa) return *this;
-        Q=nullprt;
+        Q=nullptr;
         Q = aa.Q;
         return *this;
     }
     ResourceManager(const ResourceManager&& aa) {
 
       Q=aa.Q;
-      aa.Q=nullprt;
+      aa.Q=nullptr;
     }
     ResourceManager& operator=(const ResourceManager&& aa)
     { if(this==&aa) return *this;
-        Q=nullprt;
+        Q=nullptr;
         Q=aa.Q;
-        aa.Q=nullprt;
+        aa.Q=nullptr;
         return *this;
     }
 };
