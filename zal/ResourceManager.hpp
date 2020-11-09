@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Resource.hpp"
-#include <utility>
+#include <cstddef>
 class ResourceManager
 {
     Resource* Q;
@@ -28,14 +28,14 @@ public:
     {
       Q=new Resource;
       Q=aa.Q;
-      aa.Q  =0;
+      aa.Q  = nullptr;
     }
     ResourceManager& operator=(const ResourceManager&& aa)
     { if(this!=&aa)
     {   delete Q;
         Q=new Resource;
         Q=aa.Q;
-        aa.Q = 0; }
+        aa.Q = nullptr; }
         return *this;
        
    
