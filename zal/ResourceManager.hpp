@@ -21,16 +21,16 @@ public:
         return *this;
         
     }
-    ResourceManager(const ResourceManager&& aa) 
+    ResourceManager(ResourceManager&& aa) 
     {
       Q=new Resource{*aa.Q};
-      //aa.Q=nullptr;
+    aa.Q=nullptr;
     }
-    ResourceManager& operator=(const ResourceManager&& aa)
+    ResourceManager& operator=(ResourceManager&& aa)
     { if(this!=&aa)
     {   delete Q;
         Q=new Resource {*aa.Q};
-      //  aa.Q=nullptr;
+        aa.Q=nullptr;
      
     } 
         return *this;
