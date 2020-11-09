@@ -28,14 +28,14 @@ public:
     {
       Q=new Resource;
       Q=aa.Q;
-      aa.Q  = std::nullptr_t;
+      aa.Q  = std::nullptr;
     }
     ResourceManager& operator=(const ResourceManager&& aa)
     { if(this!=&aa)
     {   delete Q;
         Q=new Resource;
         Q=aa.Q;
-        aa.Q = std::nullptr_t;} 
+        aa.Q = std::nullptr;} 
         return *this;
     }
 };
