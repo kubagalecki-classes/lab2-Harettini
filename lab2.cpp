@@ -1,5 +1,5 @@
 #include <iostream>
-class Wekt
+/*lass Wekt
 {
 private:
     int     dlug;
@@ -82,9 +82,9 @@ struct Prezent
 
     Kokardka k;
     // Inne pola ...
-};
+};*/
 
-/*class Resource
+class Resource
 {
 public:
     double get() { return 123; }
@@ -95,46 +95,46 @@ class ResourceManager
     Resource* Q;
 
 public:
-    ResourceManager() { Q = new Resource; }
+    ResourceManager() { Q = new Resource{}; }
     ~ResourceManager() { delete Q; }
-    double get() { return Q[0].get(); }
-    ResourceManager(const ResourceManager& aa) : Q(aa.Q) {}
+    double get() { return Q->get(); }
+    ResourceManager(const ResourceManager& aa) : Q{aa.Q} {}
     ResourceManager& operator=(const ResourceManager& aa)
     {
         Q = aa.Q;
         return *this;
     }
-    ResourceManager(const ResourceManager&& aa) : Q(std::move(aa.Q)) {}
-    ResourceManager& operator=(ResourceManager&& aa)
+    ResourceManager(const ResourceManager&& aa) : Q{(aa.Q)} {}
+    ResourceManager& operator=(const ResourceManager&& aa)
     {
-        Q = std::move(aa.Q);
+        Q = (aa.Q);
         return *this;
     }
-};*/
+};
 
 int main()
 {
-    Wekt W(4);
+    /* Wekt W(4);
 
-    W.ZmienDlug(6);
-    std::cout << "\n";
-    W.print();
-    W.ZmienDlug(2);
-    std::cout << "\n";
-    W.print();
-    W.ZmienDlug(6);
+     W.ZmienDlug(6);
+     std::cout << "\n";
+     W.print();
+     W.ZmienDlug(2);
+     std::cout << "\n";
+     W.print();
+     W.ZmienDlug(6);
 
-    std::cout << "\n";
-    W.print();
-    Wekt V(W);
-    Wekt U(3);
-    U = V;
-    U = U;
+     std::cout << "\n";
+     W.print();
+     Wekt V(W);
+     Wekt U(3);
+     U = V;
+     U = U;*/
 
-    /*ResourceManager A;
+    ResourceManager A;
     ResourceManager B(A);
     ResourceManager C = B;
     ResourceManager D = std::move(B);
 
-    std::cout << D.get() << B.get() << "\n";*/
+    std::cout << D.get() << B.get() << "\n";
 }
