@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Resource.hpp"
-#include <cstddef>
 class ResourceManager
 {
     Resource* Q;
@@ -12,30 +11,28 @@ public:
     double get() { return Q->get(); }
     ResourceManager(const ResourceManager& aa)
      {
- Q=new Resource;
- Q=aa.Q;
-
+ Q=new Resource{*aa.Q};
      }
     ResourceManager& operator=(const ResourceManager& aa)
     { if(this!=&aa)
         {delete Q;
-        Q=new Resource;
-        Q = aa.Q;}
+        Q=new Resource {*aa.Q};
+        }
         return *this;
         
     }
     ResourceManager(const ResourceManager&& aa) 
     {
-      Q=new Resource;
-      Q=aa.Q;
-      aa.Q  = std::nullptr;
+      Q=new Resource{*aa.Q};
+      //aa.Q=nullptr;
     }
     ResourceManager& operator=(const ResourceManager&& aa)
     { if(this!=&aa)
     {   delete Q;
-        Q=new Resource;
-        Q=aa.Q;
-        aa.Q = std::nullptr;} 
+        Q=new Resource {*aa.Q};
+      //  aa.Q=nullptr;
+     
+    } 
         return *this;
     }
 };
